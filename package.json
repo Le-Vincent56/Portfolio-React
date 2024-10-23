@@ -1,0 +1,39 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Le-Vincent56/Portfolio-React.git"
+  },
+  "author": "Vincent Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Le-Vincent56/Portfolio-React/issues"
+  },
+  "homepage": "https://github.com/Le-Vincent56/Portfolio-React#readme",
+  "description": "",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.31.0",
+    "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
+    "gulp": "^5.0.0",
+    "gulp-eslint-new": "^2.3.0",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-sass": "^5.1.0",
+    "mongoose": "^8.7.2",
+    "nodemon": "^3.1.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.80.3",
+    "serve-favicon": "^2.5.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
