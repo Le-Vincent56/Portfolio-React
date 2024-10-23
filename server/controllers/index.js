@@ -1,11 +1,11 @@
 // Import models
 //const models = require('../models');
 
-const hostIndex = async (req, res) =>
+const hostIndex = (req, res) =>
 {
     res.render('index', {
         title: 'HOME'
-    })
+    });
 }
 
 const notFound = (req, res) =>
