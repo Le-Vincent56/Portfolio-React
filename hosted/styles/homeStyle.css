@@ -8,3 +8,11 @@ html, body {
   background-color: #333333;
   font-family: "Roboto Condensed", sans-serif;
 }
+
+h1 {
+  font-weight: bold;
+}
+
+h4 {
+  font-weight: lighter;
+}
