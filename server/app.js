@@ -36,7 +36,7 @@ app.engine('handlebars', expressHandlebars.engine({
 }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
-app.use(favicon(`${__dirname}/../client/img/favicon.png`));
+//app.use(favicon(`${__dirname}/../client/img/favicon.png`));
 
 // Pass the app to the router
 router(app);

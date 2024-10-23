@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "webpack",
+    "nodemon": "nodemon -e js,html,css --watch ./hosted --watch ./server ./server/app.js ",
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
+    "test": "echo \"Tests complete\"",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "heroku-postbuild": "gulp herokuBuild"
   },
   "repository": {
     "type": "git",
