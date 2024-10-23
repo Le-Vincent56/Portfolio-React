@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const router = require('./router.js');
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/portfolio';
 
 // Connect to Mongoose
+const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/Portfolio-React';
 mongoose.connect(dbURI).catch((err) => 
 {
     // Check for errors
@@ -25,9 +25,9 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // Create the app 
 const app = express(); // Use express
-app.use('/assets', express.static(path.resolve(`${__dirname}/../client/`))); // Link assets folder
+app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`))); // Link assets folder
 app.use(compression()); // Use compression
-app.use(bodyParser.urlencoded({ extended: false })); // Parse form POST requests as urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); // Parse form POST requests as urlencoded
 app.use(bodyParser.json()); // Parse application/JSON body requests
 
 // Setup the view (MVC) to use handlebars
@@ -50,4 +50,4 @@ app.listen(port, (err) =>
     }
 
     console.log(`Listening on port ${port}`);
-})
+});
