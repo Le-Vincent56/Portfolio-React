@@ -9,10 +9,51 @@ html, body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-h1 {
+#about-section {
+  background-color: #333333;
+  padding: 20px;
+}
+#about-section #about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+#about-section #about-content #about-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   font-weight: bold;
 }
-
-h4 {
-  font-weight: lighter;
+#about-section #about-content #about-text h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+#about-section #about-content #about-text #icons {
+  display: flex;
+  gap: 15px;
+}
+#about-section #about-content #about-text #icons .icon-container {
+  background-color: #606060;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s transform 0.5s;
+}
+#about-section #about-content #about-text #icons .icon-container:hover {
+  background-color: #FFFFFF;
+  transform: scale(1.1);
+}
+#about-section #about-content #about-text #icons .icon-container .icon:hover {
+  background-color: #242424;
+  transform: scale(1.1);
+}
+#about-section #about-content #about-image img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
 }

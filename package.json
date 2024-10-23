@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./server/app.js",
   "engines": {
     "node": "20.18.0"
   },
@@ -20,7 +20,7 @@
     "url": "git+https://github.com/Le-Vincent56/Portfolio-React.git"
   },
   "author": "Vincent Le",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/Le-Vincent56/Portfolio-React/issues"
   },
@@ -29,6 +29,11 @@
   "dependencies": {
     "@babel/core": "^7.24.3",
     "@babel/preset-react": "^7.24.1",
+    "@emotion/is-prop-valid": "^1.3.1",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "babel-loader": "^9.2.1",
     "body-parser": "^1.20.3",
     "compression": "^1.7.4",
