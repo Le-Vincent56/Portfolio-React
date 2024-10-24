@@ -1,0 +1,120 @@
+@use '../portfolio';
+@use '../palette';
+
+#about-section {
+    height: 880px;
+    background: linear-gradient(
+        to bottom, 
+        palette.$background-gradient-top 50%, 
+        palette.$background-gradient-bottom 100%
+    );
+    padding: 160px 160px 40px 160px;
+
+    #about-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+
+        #about-text {
+            flex-grow: 2;
+            display: flex;
+            justify-content: center;
+
+            #about-text-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                h1 {
+                    font-size: 140;
+                    margin-bottom: 0;
+                    font-weight: bold;
+                }
+                
+                h2 {
+                    margin-top: 0;
+                    margin-bottom: 40px;
+                    font-size: 40;
+                    font-weight: 350;
+                    text-shadow: 0px 4px 4px #1c1c1c;
+                    height: 47px;
+                    color: palette.$secondary-color;
+
+                    display: inline-block;
+                    position: relative;
+
+                    &:after {
+                        content: '|';
+                        position: absolute;
+                        right: -15px;
+                        top: -2.5px;
+                        animation: blink 0.5s ease-in-out infinite;
+                        font-weight: 250;
+                        font-size: 40px;
+                        color: palette.$secondary-color;
+                    }
+                }
+    
+                #icons {
+                    display: flex;
+                    gap: 15px;
+    
+                    .icon-container {
+                        background-color: #606060;
+                        border-radius: 50%;
+                        width: 56px;
+                        height: 56px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: all 0.15s ease-in-out;
+                        box-shadow: 0px 0px 30px #212121;
+                        cursor: pointer;
+    
+                        &:hover {
+                            background-color: palette.$primary-color;
+                            transform: scale(1.1);
+    
+                            .icon {
+                                color: palette.$background-gradient-bottom;
+                                transform: scale(1.1);
+                            }
+                        }
+    
+                        .icon {
+                            width: 28px;
+                            height: auto;
+                            transition: color 1.0s transform 1.0s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+
+        #about-vertical-line {
+            flex-grow: 0.25;
+            border-left: 3px solid palette.$primary-color;
+            height: 720px;
+        }
+
+        #about-image {
+            flex-grow: 1.25;
+            text-align: center;
+
+            img {
+                max-width: 420px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0px 4px 4px #121212;
+            }
+        }
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

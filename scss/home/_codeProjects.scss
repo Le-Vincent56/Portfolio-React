@@ -1,0 +1,101 @@
+@use '../portfolio';
+@use '../palette';
+
+#code-projects {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .code-project-node {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 238px;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+            .code-project-overlay {
+                animation: overlayExpand 0.25s forwards ease-out;
+            }
+
+            .code-project-image {
+                transform: scale(1.1);
+            }
+
+            .code-project-node-title,
+            .code-project-node-roles {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.code-project-node-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.code-project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+}
+
+.code-project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.code-project-node-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.code-project-node-title, .code-project-node-roles {
+    margin: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+}
+
+.code-project-node-title {
+    font-size: 50;
+    font-weight: 300;
+    color: palette.$primary-color;
+}
+
+.code-project-node-roles {
+    font-size: 35;
+    font-weight: 200;
+    color: #8C8C8C;
+}
+
+
+// Keyframes for left-to-right overlay fade effect
+@keyframes overlayExpand {
+    0% {
+        width: 0;
+        opacity: 0.6; // Initially semi-transparent
+    }
+    100% {
+        width: 100%;
+        opacity: 0.6;
+    }
+}

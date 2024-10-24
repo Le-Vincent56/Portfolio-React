@@ -40,7 +40,7 @@ const watch = (done) => {
     gulp.watch('./scss', compileSass);
 
     // Compile JS whenever there are changes in js or jsx files
-    gulp.watch(['./client/*.js', './client/*.jsx', './client/components/*.js'], compileJS);
+    gulp.watch(['./client/*.js', './client/*.jsx', './client/components/*.js', './client/components/*.jsx'], compileJS);
 
     // Run nodemon
     nodemon({

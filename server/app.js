@@ -9,7 +9,10 @@ const expressHandlebars = require('express-handlebars');
 const router = require('./router.js');
 
 // Connect to Mongoose
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/Portfolio-React';
+const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/portfolio';
+
+console.log(dbURI);
+
 mongoose.connect(dbURI).catch((err) => 
 {
     // Check for errors
