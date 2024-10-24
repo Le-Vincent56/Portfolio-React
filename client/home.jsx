@@ -1,9 +1,10 @@
 const React = require('react');
 const { createRoot } = require('react-dom/client');
 const { useState, useEffect } = React;
-const { motion } = require('framer-motion');
+const { motion, AnimatePresence } = require('framer-motion');
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faGithub, faLinkedinIn, faSoundcloud } = require('@fortawesome/free-brands-svg-icons');
+const { faPlay } = require('@fortawesome/free-solid-svg-icons');
 const { initializeEffect } = require('./typewriter.js');
 const { HorizontalReveal, VerticalReveal, StaticReveal } = require('./components/revealComp.jsx');
 
@@ -83,15 +84,47 @@ const Projects = () => {
                 </motion.div>
             </VerticalReveal>
             <motion.div id='projects-content'>
-                <CodeProjects/>
-                {/* <AudioProjects/>
-                <WritingProjects/> */}
+                <AnimatePresence exitBeforeEnter>
+                    {activeTab === 0 && (
+                        <motion.div
+                            key="coding"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <CodeProjects />
+                        </motion.div>
+                    )}
+                    {activeTab === 1 && (
+                        <motion.div
+                            key="audio"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <AudioProjects />
+                        </motion.div>
+                    )}
+                    {activeTab === 2 && (
+                        <motion.div
+                            key="writing"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <WritingProjects />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.div>
         </motion.div>
     )
 }
 
-const CodeProjects = (props) => {
+const CodeProjects = () => {
     const [projects, setProjects] = useState([]);
 
     // Load the Code projects in from the server
@@ -102,13 +135,13 @@ const CodeProjects = (props) => {
             setProjects(data.projects);
         };
         loadProjectsFromServer();
-    }, [props.reloadProjects]);
+    }, []);
 
     // Present the appropriate HTML if no projects are loaded
     if(projects.length === 0) {
         return (
             <motion.div id='code-projects'>
-                <motion.h1 id='empty-code-projects'>No Projects Yet!</motion.h1>
+                <motion.h1 id='empty-code-projects'>No Code Projects Yet!</motion.h1>
             </motion.div>
         );
     }
@@ -141,8 +174,48 @@ const CodeProjects = (props) => {
 }
 
 const AudioProjects = () => {
+    const [projects, setProjects] = useState([]);
+
+    // Load the Code projects in from the server
+    useEffect(() => {
+        const loadProjectsFromServer = async () => {
+            const response = await fetch(`/getAudioProjects`);
+            const data = await response.json();
+            setProjects(data.projects);
+        };
+        loadProjectsFromServer();
+    }, []);
+
+    // Present the appropriate HTML if no projects are loaded
+    if(projects.length === 0) {
+        return (
+            <motion.div id='audio-projects'>
+                <motion.h1 id='empty-audio-projects'>No Audio Projects Yet!</motion.h1>
+            </motion.div>
+        );
+    }
+
+    // Create a node for each project
+    const projectNodes = projects.map(project => {
+        return (
+            <StaticReveal id={project.id} className='audio-project-node' list={false}>
+                <motion.div className='audio-project-node-thumbnail'>
+                    <motion.img src={`assets/img/audio/${project.imageURL}`} className='code-project-image'/>
+                    <motion.div className='audio-project-node-overlay'>
+                        <FontAwesomeIcon icon={faPlay} className='audio-play-icon'/>
+                    </motion.div>
+                </motion.div>
+                <motion.div className='audio-project-node-info'>
+                    <motion.h1 className='audio-project-node-title'>{project.title}</motion.h1>
+                </motion.div>
+            </StaticReveal>
+        )
+    });
+
     return (
-        <motion.div id='audio-projects'></motion.div>
+        <StaticReveal id='audio-projects' list={true}>
+            {projectNodes}
+        </StaticReveal>
     );
 }
 
